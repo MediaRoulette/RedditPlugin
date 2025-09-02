@@ -1,0 +1,10 @@
+name: RedditPlugin
+version: 0.0.1
+main: me.mediaroulette.reddit.Main
+description: Reddit extension for Media Roulette
+authors:
+  - Hashyies
+  - yemss
+website: https://github.com/MediaRoulette/RedditPlugin
+
+depend: []
