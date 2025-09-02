@@ -75,14 +75,10 @@ public class SubredditManager {
                     if (doesSubredditExist(subreddit)) {
                         return subreddit;
                     } else {
-                        // Report invalid subreddit for monitoring
                         ErrorReporter.reportFailedSubreddit(subreddit, "Subreddit validation failed - does not exist", null);
                     }
                 } catch (IOException e) {
-                    // Report validation error
                     ErrorReporter.reportFailedSubreddit(subreddit, "Subreddit validation error: " + e.getMessage(), null);
-                    // Continue to next subreddit if validation fails
-                    continue;
                 }
             }
 
