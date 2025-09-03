@@ -12,7 +12,7 @@ group = "me.mediaroulette.reddit"
 version = "1.0-SNAPSHOT"
 
 dependencies {
-    shadow("com.github.MediaRoulette:MediaRoulette:v1.0.76")
+    shadow("com.github.MediaRoulette:MediaRoulette:v1.0.79")
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }

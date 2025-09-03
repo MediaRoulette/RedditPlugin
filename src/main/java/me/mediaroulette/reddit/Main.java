@@ -5,9 +5,11 @@ import me.hash.mediaroulette.plugins.Images.ImageSourcePlugin;
 import me.hash.mediaroulette.plugins.Images.ImageSourceProvider;
 import me.hash.mediaroulette.plugins.Plugin;
 
+import me.hash.mediaroulette.utils.media.ffmpeg.resolvers.UrlResolverFactory;
 import me.mediaroulette.reddit.providers.RedditProvider;
 import me.mediaroulette.reddit.reddit.RedditClient;
 import me.mediaroulette.reddit.reddit.SubredditManager;
+import me.mediaroulette.reddit.resolvers.RedGifsResolver;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,10 +20,9 @@ public class Main extends Plugin implements ImageSourcePlugin {
 
     @Override
     public void onLoad() {
-        getLogger().info("[RedditPlugin] Loading...");
         try {
             MediaSource.register("REDDIT", "Reddit");
-            getLogger().info("[RedditPlugin] MediaSource registered");
+
         } catch (Exception e) {
             getLogger().error("[RedditPlugin] Failed to register MediaSource", e);
         }
@@ -34,7 +35,8 @@ public class Main extends Plugin implements ImageSourcePlugin {
             SubredditManager subredditManager = new SubredditManager(redditClient);
             redditProvider = new RedditProvider(redditClient, subredditManager);
 
-            getLogger().info("[RedditPlugin] Successfully enabled with Reddit provider");
+            UrlResolverFactory.addResolver(new RedGifsResolver());
+
 
         } catch (Exception e) {
             getLogger().error("[RedditPlugin] Failed to initialize Reddit provider", e);
